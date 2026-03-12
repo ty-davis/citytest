@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<script>
+  var params = new URLSearchParams(location.search);
+  var base = (params.get('base') || 'https://portal.cityspark.com').replace(/\/$/, '');
+  var slug = params.get('slug') || '';
+  var baseUrl = params.get('baseUrl') || '';
+  if (slug) {
+    window.cSparkOptions = {};
+    if (baseUrl) window.cSparkOptions.BaseUrl = baseUrl;
+    document.write('<script src="' + base + '/PortalScripts/' + encodeURIComponent(slug) + '"><' + '/script>');
+  }
+</script>
+</body>
+</html>
