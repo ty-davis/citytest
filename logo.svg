@@ -1,0 +1,85 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b0b8c8"/>
+      <stop offset="100%" stop-color="#6e7a8a"/>
+    </linearGradient>
+    <linearGradient id="barrelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8dde6"/>
+      <stop offset="50%" stop-color="#f0f2f5"/>
+      <stop offset="100%" stop-color="#b0b8c8"/>
+    </linearGradient>
+    <linearGradient id="thimbleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7b9ccc"/>
+      <stop offset="50%" stop-color="#aac4e8"/>
+      <stop offset="100%" stop-color="#4a6fa5"/>
+    </linearGradient>
+    <linearGradient id="ratchetGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0c8d4"/>
+      <stop offset="100%" stop-color="#8090a4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- C-frame body -->
+  <path d="M 38 52 L 38 36 Q 38 22 52 22 L 148 22 Q 162 22 162 36 L 162 52"
+        fill="url(#frameGrad)" stroke="#4a5568" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M 38 148 L 38 164 Q 38 178 52 178 L 148 178 Q 162 178 162 164 L 162 148"
+        fill="url(#frameGrad)" stroke="#4a5568" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- left vertical of C-frame -->
+  <rect x="26" y="52" width="22" height="96" rx="4" fill="url(#frameGrad)" stroke="#4a5568" stroke-width="2.5"/>
+
+  <!-- Anvil face (fixed, left side) -->
+  <rect x="22" y="86" width="14" height="28" rx="2" fill="#c8d0dc" stroke="#4a5568" stroke-width="2"/>
+
+  <!-- Spindle (the thin rod coming from right into measuring gap) -->
+  <rect x="112" y="93" width="46" height="14" rx="2" fill="#d0d8e4" stroke="#4a5568" stroke-width="1.5"/>
+  <!-- Spindle tip face -->
+  <rect x="112" y="89" width="8" height="22" rx="1.5" fill="#b8c4d0" stroke="#4a5568" stroke-width="1.5"/>
+
+  <!-- Barrel / sleeve -->
+  <rect x="60" y="84" width="62" height="32" rx="5" fill="url(#barrelGrad)" stroke="#4a5568" stroke-width="2"/>
+  <!-- Barrel centre reference line -->
+  <line x1="62" y1="100" x2="120" y2="100" stroke="#4a5568" stroke-width="1" opacity="0.4"/>
+  <!-- Sleeve tick marks (above line = 0.5mm, below = 1mm intervals) -->
+  <line x1="70"  y1="100" x2="70"  y2="92"  stroke="#2d3748" stroke-width="1.5"/>
+  <line x1="79"  y1="100" x2="79"  y2="95"  stroke="#2d3748" stroke-width="1"/>
+  <line x1="88"  y1="100" x2="88"  y2="92"  stroke="#2d3748" stroke-width="1.5"/>
+  <line x1="97"  y1="100" x2="97"  y2="95"  stroke="#2d3748" stroke-width="1"/>
+  <line x1="106" y1="100" x2="106" y2="92"  stroke="#2d3748" stroke-width="1.5"/>
+  <line x1="115" y1="100" x2="115" y2="95"  stroke="#2d3748" stroke-width="1"/>
+  <!-- Sleeve tick marks (below line) -->
+  <line x1="74"  y1="100" x2="74"  y2="108" stroke="#2d3748" stroke-width="1"/>
+  <line x1="83"  y1="100" x2="83"  y2="108" stroke="#2d3748" stroke-width="1"/>
+  <line x1="92"  y1="100" x2="92"  y2="108" stroke="#2d3748" stroke-width="1"/>
+  <line x1="101" y1="100" x2="101" y2="108" stroke="#2d3748" stroke-width="1"/>
+  <line x1="110" y1="100" x2="110" y2="108" stroke="#2d3748" stroke-width="1"/>
+
+  <!-- Thimble (cylindrical, sits over the right part of the barrel) -->
+  <rect x="112" y="78" width="36" height="44" rx="6" fill="url(#thimbleGrad)" stroke="#3a5a8a" stroke-width="2"/>
+  <!-- Thimble bevel edge -->
+  <line x1="112" y1="78" x2="148" y2="78" stroke="#5b7cf6" stroke-width="1.5" opacity="0.6"/>
+  <line x1="112" y1="122" x2="148" y2="122" stroke="#3a5a8a" stroke-width="1.5" opacity="0.5"/>
+  <!-- Thimble angular scale lines -->
+  <line x1="115" y1="78" x2="115" y2="88"  stroke="white" stroke-width="1" opacity="0.7"/>
+  <line x1="121" y1="78" x2="121" y2="86"  stroke="white" stroke-width="0.8" opacity="0.5"/>
+  <line x1="127" y1="78" x2="127" y2="88"  stroke="white" stroke-width="1" opacity="0.7"/>
+  <line x1="133" y1="78" x2="133" y2="86"  stroke="white" stroke-width="0.8" opacity="0.5"/>
+  <line x1="139" y1="78" x2="139" y2="88"  stroke="white" stroke-width="1" opacity="0.7"/>
+  <line x1="145" y1="78" x2="145" y2="86"  stroke="white" stroke-width="0.8" opacity="0.5"/>
+  <!-- Thimble knurl lines -->
+  <line x1="115" y1="112" x2="115" y2="122" stroke="white" stroke-width="1" opacity="0.5"/>
+  <line x1="121" y1="114" x2="121" y2="122" stroke="white" stroke-width="0.8" opacity="0.4"/>
+  <line x1="127" y1="112" x2="127" y2="122" stroke="white" stroke-width="1" opacity="0.5"/>
+  <line x1="133" y1="114" x2="133" y2="122" stroke="white" stroke-width="0.8" opacity="0.4"/>
+  <line x1="139" y1="112" x2="139" y2="122" stroke="white" stroke-width="1" opacity="0.5"/>
+  <line x1="145" y1="114" x2="145" y2="122" stroke="white" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Ratchet knob (rightmost, knurled cylinder) -->
+  <rect x="148" y="82" width="26" height="36" rx="8" fill="url(#ratchetGrad)" stroke="#4a5568" stroke-width="2"/>
+  <!-- Knurl lines on ratchet -->
+  <line x1="153" y1="82" x2="153" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
+  <line x1="158" y1="82" x2="158" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
+  <line x1="163" y1="82" x2="163" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
+  <line x1="168" y1="82" x2="168" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
+</svg>
+
