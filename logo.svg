@@ -1,85 +1,113 @@
 <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Outside micrometer, side-profile view.
+    Reference: Mitutoyo 103-series 0-25mm, ~1.3 px/mm scale.
+    Measuring axis y=96. ~7mm gap: anvil face x=32, spindle face x=42.
+    C-frame: left arm x=12-26, right arm x=68-82, body y=126-168.
+    Throat (open): x=26-68, y=68-132.
+    Barrel: x=68-132 (16px ~ 12mm OD).
+    Thimble: x=116-158 (22px ~ 17mm OD, over barrel right end).
+    Ratchet: x=158-183 (14px ~ 11mm OD, knurled).
+  -->
   <defs>
-    <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#b0b8c8"/>
-      <stop offset="100%" stop-color="#6e7a8a"/>
+    <linearGradient id="g-frame" x1="12" y1="68" x2="12" y2="168" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#a0b0c0"/>
+      <stop offset="45%"  stop-color="#cdd8e4"/>
+      <stop offset="100%" stop-color="#7888a0"/>
     </linearGradient>
-    <linearGradient id="barrelGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#d8dde6"/>
-      <stop offset="50%" stop-color="#f0f2f5"/>
-      <stop offset="100%" stop-color="#b0b8c8"/>
+    <linearGradient id="g-chrome" x1="0" y1="85" x2="0" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#b8c8d8"/>
+      <stop offset="40%"  stop-color="#eef2f6"/>
+      <stop offset="100%" stop-color="#8898aa"/>
     </linearGradient>
-    <linearGradient id="thimbleGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#7b9ccc"/>
-      <stop offset="50%" stop-color="#aac4e8"/>
-      <stop offset="100%" stop-color="#4a6fa5"/>
+    <linearGradient id="g-thimble" x1="0" y1="85" x2="0" y2="107" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#304e78"/>
+      <stop offset="40%"  stop-color="#5c85b8"/>
+      <stop offset="100%" stop-color="#1e3460"/>
     </linearGradient>
-    <linearGradient id="ratchetGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#c0c8d4"/>
-      <stop offset="100%" stop-color="#8090a4"/>
+    <linearGradient id="g-ratchet" x1="0" y1="88" x2="0" y2="103" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#9aabb8"/>
+      <stop offset="50%"  stop-color="#ccd8e4"/>
+      <stop offset="100%" stop-color="#7888a0"/>
     </linearGradient>
   </defs>
 
-  <!-- C-frame body -->
-  <path d="M 38 52 L 38 36 Q 38 22 52 22 L 148 22 Q 162 22 162 36 L 162 52"
-        fill="url(#frameGrad)" stroke="#4a5568" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M 38 148 L 38 164 Q 38 178 52 178 L 148 178 Q 162 178 162 164 L 162 148"
-        fill="url(#frameGrad)" stroke="#4a5568" stroke-width="2.5" stroke-linejoin="round"/>
-  <!-- left vertical of C-frame -->
-  <rect x="26" y="52" width="22" height="96" rx="4" fill="url(#frameGrad)" stroke="#4a5568" stroke-width="2.5"/>
+  <!-- C-FRAME FILL: evenodd subtracts throat cutout from outer rect -->
+  <path fill-rule="evenodd" fill="url(#g-frame)" stroke="none" d="
+    M 22,68 L 72,68 Q 82,68 82,78 L 82,158 Q 82,168 72,168
+    L 22,168 Q 12,168 12,158 L 12,78 Q 12,68 22,68 Z
+    M 26,68 L 68,68 L 68,128 Q 68,132 64,132
+    L 30,132 Q 26,132 26,128 Z
+  "/>
 
-  <!-- Anvil face (fixed, left side) -->
-  <rect x="22" y="86" width="14" height="28" rx="2" fill="#c8d0dc" stroke="#4a5568" stroke-width="2"/>
+  <!-- C-FRAME OUTLINE: single path, no fill.
+       Arm tops, inner faces, throat-bottom curve, outer boundary.
+       Throat top (y=68, x=26-68) intentionally open. -->
+  <path fill="none" stroke="#3a4e62" stroke-width="1.5"
+        stroke-linejoin="round" stroke-linecap="round"
+        d="M 22,68 L 26,68
+           L 26,128 Q 26,132 30,132 L 62,132 Q 68,132 68,128 L 68,68
+           L 72,68 Q 82,68 82,78
+           L 82,158 Q 82,168 72,168 L 22,168 Q 12,168 12,158 L 12,78 Q 12,68 22,68 Z"/>
 
-  <!-- Spindle (the thin rod coming from right into measuring gap) -->
-  <rect x="112" y="93" width="46" height="14" rx="2" fill="#d0d8e4" stroke="#4a5568" stroke-width="1.5"/>
-  <!-- Spindle tip face -->
-  <rect x="112" y="89" width="8" height="22" rx="1.5" fill="#b8c4d0" stroke="#4a5568" stroke-width="1.5"/>
+  <!-- BARREL / SLEEVE  x=68-132, y=88-104  (16px ~ 12mm OD) -->
+  <rect x="68" y="88" width="64" height="16" rx="2"
+        fill="url(#g-chrome)" stroke="#3a4e62" stroke-width="1.5"/>
+  <!-- Datum reference line at measuring axis -->
+  <line x1="70" y1="96" x2="130" y2="96" stroke="#3a4e62" stroke-width="0.7" opacity="0.4"/>
+  <!-- Major ticks above datum (alternating long/short every 8px) -->
+  <line x1="76"  y1="88" x2="76"  y2="93" stroke="#182030" stroke-width="1.4"/>
+  <line x1="84"  y1="88" x2="84"  y2="91" stroke="#182030" stroke-width="1.0"/>
+  <line x1="92"  y1="88" x2="92"  y2="93" stroke="#182030" stroke-width="1.4"/>
+  <line x1="100" y1="88" x2="100" y2="91" stroke="#182030" stroke-width="1.0"/>
+  <line x1="108" y1="88" x2="108" y2="93" stroke="#182030" stroke-width="1.4"/>
+  <line x1="116" y1="88" x2="116" y2="91" stroke="#182030" stroke-width="1.0"/>
+  <line x1="124" y1="88" x2="124" y2="93" stroke="#182030" stroke-width="1.4"/>
+  <line x1="130" y1="88" x2="130" y2="91" stroke="#182030" stroke-width="1.0"/>
+  <!-- 0.5mm ticks below datum (offset 4px from major) -->
+  <line x1="80"  y1="99" x2="80"  y2="104" stroke="#182030" stroke-width="1.0"/>
+  <line x1="88"  y1="99" x2="88"  y2="104" stroke="#182030" stroke-width="1.0"/>
+  <line x1="96"  y1="99" x2="96"  y2="104" stroke="#182030" stroke-width="1.0"/>
+  <line x1="104" y1="99" x2="104" y2="104" stroke="#182030" stroke-width="1.0"/>
+  <line x1="112" y1="99" x2="112" y2="104" stroke="#182030" stroke-width="1.0"/>
+  <line x1="120" y1="99" x2="120" y2="104" stroke="#182030" stroke-width="1.0"/>
+  <line x1="128" y1="99" x2="128" y2="104" stroke="#182030" stroke-width="1.0"/>
 
-  <!-- Barrel / sleeve -->
-  <rect x="60" y="84" width="62" height="32" rx="5" fill="url(#barrelGrad)" stroke="#4a5568" stroke-width="2"/>
-  <!-- Barrel centre reference line -->
-  <line x1="62" y1="100" x2="120" y2="100" stroke="#4a5568" stroke-width="1" opacity="0.4"/>
-  <!-- Sleeve tick marks (above line = 0.5mm, below = 1mm intervals) -->
-  <line x1="70"  y1="100" x2="70"  y2="92"  stroke="#2d3748" stroke-width="1.5"/>
-  <line x1="79"  y1="100" x2="79"  y2="95"  stroke="#2d3748" stroke-width="1"/>
-  <line x1="88"  y1="100" x2="88"  y2="92"  stroke="#2d3748" stroke-width="1.5"/>
-  <line x1="97"  y1="100" x2="97"  y2="95"  stroke="#2d3748" stroke-width="1"/>
-  <line x1="106" y1="100" x2="106" y2="92"  stroke="#2d3748" stroke-width="1.5"/>
-  <line x1="115" y1="100" x2="115" y2="95"  stroke="#2d3748" stroke-width="1"/>
-  <!-- Sleeve tick marks (below line) -->
-  <line x1="74"  y1="100" x2="74"  y2="108" stroke="#2d3748" stroke-width="1"/>
-  <line x1="83"  y1="100" x2="83"  y2="108" stroke="#2d3748" stroke-width="1"/>
-  <line x1="92"  y1="100" x2="92"  y2="108" stroke="#2d3748" stroke-width="1"/>
-  <line x1="101" y1="100" x2="101" y2="108" stroke="#2d3748" stroke-width="1"/>
-  <line x1="110" y1="100" x2="110" y2="108" stroke="#2d3748" stroke-width="1"/>
+  <!-- ANVIL  x=12-32, y=87-105  (18px ~ 14mm; protrudes 6px past left arm inner face) -->
+  <rect x="12" y="87" width="20" height="18" rx="2"
+        fill="url(#g-chrome)" stroke="#3a4e62" stroke-width="1.5"/>
+  <line x1="32" y1="88" x2="32" y2="104" stroke="#dce8f4" stroke-width="1.5" opacity="0.6"/>
 
-  <!-- Thimble (cylindrical, sits over the right part of the barrel) -->
-  <rect x="112" y="78" width="36" height="44" rx="6" fill="url(#thimbleGrad)" stroke="#3a5a8a" stroke-width="2"/>
-  <!-- Thimble bevel edge -->
-  <line x1="112" y1="78" x2="148" y2="78" stroke="#5b7cf6" stroke-width="1.5" opacity="0.6"/>
-  <line x1="112" y1="122" x2="148" y2="122" stroke="#3a5a8a" stroke-width="1.5" opacity="0.5"/>
-  <!-- Thimble angular scale lines -->
-  <line x1="115" y1="78" x2="115" y2="88"  stroke="white" stroke-width="1" opacity="0.7"/>
-  <line x1="121" y1="78" x2="121" y2="86"  stroke="white" stroke-width="0.8" opacity="0.5"/>
-  <line x1="127" y1="78" x2="127" y2="88"  stroke="white" stroke-width="1" opacity="0.7"/>
-  <line x1="133" y1="78" x2="133" y2="86"  stroke="white" stroke-width="0.8" opacity="0.5"/>
-  <line x1="139" y1="78" x2="139" y2="88"  stroke="white" stroke-width="1" opacity="0.7"/>
-  <line x1="145" y1="78" x2="145" y2="86"  stroke="white" stroke-width="0.8" opacity="0.5"/>
-  <!-- Thimble knurl lines -->
-  <line x1="115" y1="112" x2="115" y2="122" stroke="white" stroke-width="1" opacity="0.5"/>
-  <line x1="121" y1="114" x2="121" y2="122" stroke="white" stroke-width="0.8" opacity="0.4"/>
-  <line x1="127" y1="112" x2="127" y2="122" stroke="white" stroke-width="1" opacity="0.5"/>
-  <line x1="133" y1="114" x2="133" y2="122" stroke="white" stroke-width="0.8" opacity="0.4"/>
-  <line x1="139" y1="112" x2="139" y2="122" stroke="white" stroke-width="1" opacity="0.5"/>
-  <line x1="145" y1="114" x2="145" y2="122" stroke="white" stroke-width="0.8" opacity="0.4"/>
+  <!-- SPINDLE visible in throat  x=42-68, y=90-102  (12px ~ 9mm)
+       Measuring face at x=42. Gap from anvil face (x=32) = 10px ~ 7.7mm. -->
+  <rect x="42" y="90" width="26" height="12" rx="1.5"
+        fill="url(#g-chrome)" stroke="#3a4e62" stroke-width="1.5"/>
+  <line x1="42" y1="91" x2="42" y2="101" stroke="#dce8f4" stroke-width="1.5" opacity="0.6"/>
 
-  <!-- Ratchet knob (rightmost, knurled cylinder) -->
-  <rect x="148" y="82" width="26" height="36" rx="8" fill="url(#ratchetGrad)" stroke="#4a5568" stroke-width="2"/>
-  <!-- Knurl lines on ratchet -->
-  <line x1="153" y1="82" x2="153" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
-  <line x1="158" y1="82" x2="158" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
-  <line x1="163" y1="82" x2="163" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
-  <line x1="168" y1="82" x2="168" y2="118" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
+  <!-- THIMBLE  x=116-158, y=85-107  (22px ~ 17mm OD, over barrel right end) -->
+  <rect x="116" y="85" width="42" height="22" rx="5"
+        fill="url(#g-thimble)" stroke="#263c58" stroke-width="1.5"/>
+  <line x1="116" y1="86" x2="116" y2="106" stroke="#80a8cc" stroke-width="1.5" opacity="0.4"/>
+  <!-- Graduation lines at top face: alternating short/long every 3px -->
+  <line x1="120" y1="85" x2="120" y2="90" stroke="rgba(255,255,255,0.5)"  stroke-width="0.9"/>
+  <line x1="123" y1="85" x2="123" y2="93" stroke="rgba(255,255,255,0.85)" stroke-width="1.1"/>
+  <line x1="126" y1="85" x2="126" y2="90" stroke="rgba(255,255,255,0.5)"  stroke-width="0.9"/>
+  <line x1="129" y1="85" x2="129" y2="93" stroke="rgba(255,255,255,0.85)" stroke-width="1.1"/>
+  <line x1="132" y1="85" x2="132" y2="90" stroke="rgba(255,255,255,0.5)"  stroke-width="0.9"/>
+  <line x1="135" y1="85" x2="135" y2="93" stroke="rgba(255,255,255,0.85)" stroke-width="1.1"/>
+  <line x1="138" y1="85" x2="138" y2="90" stroke="rgba(255,255,255,0.5)"  stroke-width="0.9"/>
+  <line x1="141" y1="85" x2="141" y2="93" stroke="rgba(255,255,255,0.85)" stroke-width="1.1"/>
+  <line x1="144" y1="85" x2="144" y2="90" stroke="rgba(255,255,255,0.5)"  stroke-width="0.9"/>
+  <line x1="147" y1="85" x2="147" y2="93" stroke="rgba(255,255,255,0.85)" stroke-width="1.1"/>
+  <line x1="150" y1="85" x2="150" y2="90" stroke="rgba(255,255,255,0.5)"  stroke-width="0.9"/>
+  <line x1="153" y1="85" x2="153" y2="93" stroke="rgba(255,255,255,0.85)" stroke-width="1.1"/>
+  <line x1="156" y1="85" x2="156" y2="90" stroke="rgba(255,255,255,0.5)"  stroke-width="0.9"/>
+
+  <!-- RATCHET STOP  x=158-183, y=89-103  (14px ~ 11mm OD, knurled) -->
+  <rect x="158" y="89" width="25" height="14" rx="6"
+        fill="url(#g-ratchet)" stroke="#3a4e62" stroke-width="1.5"/>
+  <line x1="163" y1="89" x2="163" y2="103" stroke="#3a4e62" stroke-width="0.9" opacity="0.4"/>
+  <line x1="168" y1="89" x2="168" y2="103" stroke="#3a4e62" stroke-width="0.9" opacity="0.4"/>
+  <line x1="173" y1="89" x2="173" y2="103" stroke="#3a4e62" stroke-width="0.9" opacity="0.4"/>
+  <line x1="178" y1="89" x2="178" y2="103" stroke="#3a4e62" stroke-width="0.9" opacity="0.4"/>
 </svg>
-
